@@ -205,6 +205,8 @@ lv_btn_state_t lv_btn_get_state(const lv_obj_t * btn)
     }
 }
 
+#if LV_USE_API_FULL
+
 /**
  * Get the toggle enable attribute of the button
  * @param btn pointer to a button object
@@ -218,6 +220,7 @@ bool lv_btn_get_checkable(const lv_obj_t * btn)
 
     return ext->checkable != 0 ? true : false;
 }
+#endif
 
 /**********************
  *   STATIC FUNCTIONS
@@ -264,9 +267,10 @@ static lv_res_t lv_btn_signal(lv_obj_t * btn, lv_signal_t sign, void * param)
     if(res != LV_RES_OK) return res;
     if(sign == LV_SIGNAL_GET_TYPE) return lv_obj_handle_get_type_signal(param, LV_OBJX_NAME);
 
-    bool tgl           = lv_btn_get_checkable(btn);
+    lv_btn_ext_t * ext = lv_obj_get_ext_attr(btn);
 
     if(sign == LV_SIGNAL_RELEASED) {
+        bool tgl = ext->checkable;
         /*If not dragged and it was not long press action then
          *change state and run the action*/
         if(lv_indev_is_dragging(param) == false && tgl) {
@@ -285,9 +289,10 @@ static lv_res_t lv_btn_signal(lv_obj_t * btn, lv_signal_t sign, void * param)
         }
     }
     else if(sign == LV_SIGNAL_CONTROL) {
+        bool tgl = ext->checkable;
         char c = *((char *)param);
         if(c == LV_KEY_RIGHT || c == LV_KEY_UP) {
-            if(lv_btn_get_checkable(btn)) {
+            if(tgl) {
                 lv_btn_set_state(btn, LV_BTN_STATE_CHECKED_RELEASED);
 
                 uint32_t state = 1;
@@ -297,7 +302,7 @@ static lv_res_t lv_btn_signal(lv_obj_t * btn, lv_signal_t sign, void * param)
 
         }
         else if(c == LV_KEY_LEFT || c == LV_KEY_DOWN) {
-            if(lv_btn_get_checkable(btn)) {
+            if(tgl) {
                 lv_btn_set_state(btn, LV_BTN_STATE_RELEASED);
 
                 uint32_t state = 0;

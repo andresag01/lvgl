@@ -116,6 +116,7 @@ static inline bool lv_switch_get_state(const lv_obj_t * sw)
     return ext->state ? true : false;
 }
 
+#if LV_USE_API_FULL
 /**
  * Get the animation time of the switch
  * @param sw pointer to a  switch object
@@ -125,6 +126,7 @@ static inline uint16_t lv_switch_get_anim_time(const lv_obj_t * sw)
 {
     return lv_bar_get_anim_time(sw);
 }
+#endif
 
 /**********************
  *      MACROS

@@ -181,12 +181,15 @@ void lv_btnmatrix_set_one_check(lv_obj_t * btnm, bool one_chk);
  */
 const char ** lv_btnmatrix_get_map_array(const lv_obj_t * btnm);
 
+#if LV_USE_API_FULL
 /**
  * Check whether the button's text can use recolor or not
  * @param btnm pointer to button matrix object
  * @return true: text recolor enable; false: disabled
  */
 bool lv_btnmatrix_get_recolor(const lv_obj_t * btnm);
+
+#endif
 
 /**
  * Get the index of the lastly "activated" button by the user (pressed, released etc)
@@ -230,12 +233,15 @@ const char * lv_btnmatrix_get_btn_text(const lv_obj_t * btnm, uint16_t btn_id);
  */
 bool lv_btnmatrix_get_btn_ctrl(lv_obj_t * btnm, uint16_t btn_id, lv_btnmatrix_ctrl_t ctrl);
 
+
+#if LV_USE_API_FULL
 /**
  * Find whether "one toggle" mode is enabled.
  * @param btnm Button matrix object
  * @return whether "one toggle" mode is enabled
  */
 bool lv_btnmatrix_get_one_check(const lv_obj_t * btnm);
+#endif
 /**********************
  *      MACROS
  **********************/

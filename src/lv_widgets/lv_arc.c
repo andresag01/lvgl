@@ -320,6 +320,7 @@ void lv_arc_set_rotation(lv_obj_t * arc, uint16_t rotation_angle)
  * Getter functions
  *====================*/
 
+#if LV_USE_API_FULL
 /**
  * Get the start angle of an arc.
  * @param arc pointer to an arc object
@@ -375,6 +376,8 @@ uint16_t lv_arc_get_bg_angle_end(lv_obj_t * arc)
 
     return ext->bg_angle_end;
 }
+
+#endif
 
 /*=====================
  * Other functions

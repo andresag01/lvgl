@@ -158,6 +158,8 @@ int16_t lv_bar_get_value(const lv_obj_t * bar);
  */
 int16_t lv_bar_get_start_value(const lv_obj_t * bar);
 
+#if LV_USE_API_FULL
+
 /**
  * Get the minimum value of a bar
  * @param bar pointer to a bar object
@@ -172,6 +174,8 @@ int16_t lv_bar_get_min_value(const lv_obj_t * bar);
  */
 int16_t lv_bar_get_max_value(const lv_obj_t * bar);
 
+#endif
+
 /**
  * Get the type of bar.
  * @param bar pointer to bar object
@@ -179,12 +183,15 @@ int16_t lv_bar_get_max_value(const lv_obj_t * bar);
  */
 lv_bar_type_t lv_bar_get_type(lv_obj_t * bar);
 
+#if LV_USE_API_FULL
 /**
  * Get the animation time of the bar
  * @param bar pointer to a bar object
  * @return the animation time in milliseconds.
  */
 uint16_t lv_bar_get_anim_time(const lv_obj_t * bar);
+
+#endif
 
 /**********************
  *      MACROS

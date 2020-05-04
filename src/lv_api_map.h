@@ -76,6 +76,7 @@ static inline void lv_bar_set_sym(lv_obj_t * bar, bool en)
         lv_bar_set_type(bar, LV_BAR_TYPE_NORMAL);
 }
 
+#if LV_USE_API_FULL
 /**
  * Get whether the bar is symmetric or not.
  * @param bar pointer to a bar object
@@ -86,6 +87,7 @@ static inline bool lv_bar_get_sym(lv_obj_t * bar)
 {
     return lv_bar_get_type(bar) == LV_BAR_TYPE_SYMMETRICAL;
 }
+#endif
 
 #endif
 
@@ -103,6 +105,7 @@ static inline void lv_slider_set_sym(lv_obj_t * slider, bool en)
     lv_bar_set_sym(slider, en);
 }
 
+#if LV_USE_API_FULL
 /**
  * Get whether the slider is symmetric or not.
  * @param slider pointer to a slider object
@@ -113,6 +116,7 @@ static inline bool lv_slider_get_sym(lv_obj_t * slider)
 {
     return lv_bar_get_sym(slider);
 }
+#endif
 
 #endif
 

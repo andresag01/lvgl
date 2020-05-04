@@ -144,6 +144,7 @@ lv_keyboard_mode_t lv_keyboard_get_mode(const lv_obj_t * kb);
  */
 bool lv_keyboard_get_cursor_manage(const lv_obj_t * kb);
 
+#if LV_USE_API_FULL
 /**
  * Get the current map of a keyboard
  * @param kb pointer to a keyboard object
@@ -153,6 +154,7 @@ static inline const char ** lv_keyboard_get_map_array(const lv_obj_t * kb)
 {
     return lv_btnmatrix_get_map_array(kb);
 }
+#endif
 
 /*=====================
  * Other functions

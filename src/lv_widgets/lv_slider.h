@@ -154,6 +154,7 @@ static inline int16_t lv_slider_get_left_value(const lv_obj_t * slider)
     return lv_bar_get_start_value(slider);
 }
 
+#if LV_USE_API_FULL
 /**
  * Get the minimum value of a slider
  * @param slider pointer to a slider object
@@ -173,6 +174,7 @@ static inline int16_t lv_slider_get_max_value(const lv_obj_t * slider)
 {
     return lv_bar_get_max_value(slider);
 }
+#endif
 
 /**
  * Give the slider is being dragged or not
@@ -181,6 +183,7 @@ static inline int16_t lv_slider_get_max_value(const lv_obj_t * slider)
  */
 bool lv_slider_is_dragged(const lv_obj_t * slider);
 
+#if LV_USE_API_FULL
 /**
  * Get the animation time of the slider
  * @param slider pointer to a slider object
@@ -191,6 +194,7 @@ static inline uint16_t lv_slider_get_anim_time(lv_obj_t * slider)
     return lv_bar_get_anim_time(slider);
 }
 
+#endif
 /**
  * Get whether the slider is symmetric or not.
  * @param slider pointer to a bar object

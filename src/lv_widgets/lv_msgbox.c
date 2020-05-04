@@ -224,16 +224,17 @@ void lv_msgbox_set_anim_time(lv_obj_t * mbox, uint16_t anim_time)
 void lv_msgbox_start_auto_close(lv_obj_t * mbox, uint16_t delay)
 {
     LV_ASSERT_OBJ(mbox, LV_OBJX_NAME);
+    lv_msgbox_ext_t * ext = lv_obj_get_ext_attr(mbox);
 
 #if LV_USE_ANIMATION
-    if(lv_msgbox_get_anim_time(mbox) != 0) {
+    if(ext->anim_time != 0) {
         /*Add shrinking animations*/
         lv_anim_t a;
         lv_anim_init(&a);
         lv_anim_set_var(&a, mbox);
         lv_anim_set_exec_cb(&a, (lv_anim_exec_xcb_t)lv_obj_set_height);
         lv_anim_set_values(&a, lv_obj_get_height(mbox), 0);
-        lv_anim_set_time(&a, lv_msgbox_get_anim_time(mbox));
+        lv_anim_set_time(&a, ext->anim_time);
         lv_anim_set_delay(&a, delay);
         lv_anim_start(&a);
 
@@ -253,7 +254,7 @@ void lv_msgbox_start_auto_close(lv_obj_t * mbox, uint16_t delay)
         lv_anim_set_exec_cb(&a, (lv_anim_exec_xcb_t)NULL);
         lv_anim_set_values(&a, 0, 1);
         lv_anim_set_ready_cb(&a, lv_msgbox_close_ready_cb);
-        lv_anim_set_time(&a, lv_msgbox_get_anim_time(mbox));
+        lv_anim_set_time(&a, ext->anim_time);
         lv_anim_set_delay(&a, delay);
         lv_anim_start(&a);
     }
@@ -348,6 +349,8 @@ const char * lv_msgbox_get_active_btn_text(lv_obj_t * mbox)
         return NULL;
 }
 
+#if LV_USE_API_FULL
+
 /**
  * Get the animation duration (close animation time)
  * @param mbox pointer to a message box object
@@ -381,6 +384,8 @@ bool lv_msgbox_get_recolor(const lv_obj_t * mbox)
 
     return lv_btnmatrix_get_recolor(ext->btnm);
 }
+
+#endif
 
 /**
  * Get message box button matrix

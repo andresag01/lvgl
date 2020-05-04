@@ -177,6 +177,7 @@ static inline lv_btn_state_t lv_imgbtn_get_state(const lv_obj_t * imgbtn)
     return lv_btn_get_state(imgbtn);
 }
 
+#if LV_USE_API_FULL
 /**
  * Get the toggle enable attribute of the image button
  * @param imgbtn pointer to a image button object
@@ -186,6 +187,7 @@ static inline bool lv_imgbtn_get_checkable(const lv_obj_t * imgbtn)
 {
     return lv_btn_get_checkable(imgbtn);
 }
+#endif
 
 /*=====================
  * Other functions

@@ -158,6 +158,9 @@ static inline void lv_btn_set_fit(lv_obj_t * btn, lv_fit_t fit)
  */
 lv_btn_state_t lv_btn_get_state(const lv_obj_t * btn);
 
+
+#if LV_USE_API_FULL
+
 /**
  * Get the toggle enable attribute of the button
  * @param btn pointer to a button object
@@ -214,6 +217,8 @@ static inline lv_fit_t lv_btn_get_fit_bottom(const lv_obj_t * btn)
 {
     return lv_cont_get_fit_bottom(btn);
 }
+
+#endif
 
 /**********************
  *      MACROS

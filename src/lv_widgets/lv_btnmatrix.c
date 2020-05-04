@@ -439,6 +439,8 @@ const char ** lv_btnmatrix_get_map_array(const lv_obj_t * btnm)
     return ext->map_p;
 }
 
+#if LV_USE_API_FULL
+
 /**
  * Check whether the button's text can use recolor or not
  * @param btnm pointer to button matrix object
@@ -452,6 +454,8 @@ bool lv_btnmatrix_get_recolor(const lv_obj_t * btnm)
 
     return ext->recolor;
 }
+#endif
+
 
 /**
  * Get the index of the lastly "activated" button by the user (pressed, released etc)
@@ -549,6 +553,8 @@ bool lv_btnmatrix_get_btn_ctrl(lv_obj_t * btnm, uint16_t btn_id, lv_btnmatrix_ct
 }
 
 
+#if LV_USE_API_FULL
+
 /**
  * Find whether "one check" mode is enabled.
  * @param btnm Button matrix object
@@ -562,6 +568,7 @@ bool lv_btnmatrix_get_one_check(const lv_obj_t * btnm)
 
     return ext->one_check;
 }
+#endif
 
 /**********************
  *   STATIC FUNCTIONS

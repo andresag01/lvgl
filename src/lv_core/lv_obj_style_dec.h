@@ -94,6 +94,8 @@ extern "C" {
         _lv_style_set##style_type (style, LV_STYLE_##prop_name | (state << LV_STYLE_STATE_POS), value);                  \
     }
 
+
+#if LV_USE_API_FULL
 #define _LV_OBJ_STYLE_SET_GET_DECLARE(prop_name, func_name, value_type, style_type, scalar)                             \
     _OBJ_GET_STYLE_##scalar(prop_name, func_name, value_type, style_type)                                          \
     _OBJ_SET_STYLE_LOCAL_##scalar(prop_name, func_name, value_type, style_type)                                         \
@@ -110,6 +112,16 @@ extern "C" {
         return _lv_style_get##style_type (style, LV_STYLE_##prop_name | (state << LV_STYLE_STATE_POS), res);            \
     }                                                                                                                   \
     _OBJ_SET_STYLE_##scalar(prop_name, func_name, value_type, style_type)
+#else
+#define _LV_OBJ_STYLE_SET_GET_DECLARE(prop_name, func_name, value_type, style_type, scalar)                             \
+    _OBJ_GET_STYLE_##scalar(prop_name, func_name, value_type, style_type)                                          \
+    _OBJ_SET_STYLE_LOCAL_##scalar(prop_name, func_name, value_type, style_type)                                         \
+    static inline void lv_obj_remove_style_local_##func_name (lv_obj_t * obj, uint8_t part, lv_state_t state)           \
+    {                                                                                                                   \
+        _lv_obj_remove_style_local_prop(obj, part, LV_STYLE_##prop_name | (state << LV_STYLE_STATE_POS));               \
+    }                                                                                                                   \
+    _OBJ_SET_STYLE_##scalar(prop_name, func_name, value_type, style_type)
+#endif
 
 _LV_OBJ_STYLE_SET_GET_DECLARE(RADIUS, radius, lv_style_int_t, _int, scalar)
 _LV_OBJ_STYLE_SET_GET_DECLARE(CLIP_CORNER, clip_corner, bool, _int, scalar)

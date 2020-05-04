@@ -367,8 +367,6 @@ void _lv_style_set_opa(lv_style_t * style, lv_style_property_t prop, lv_opa_t op
  */
 void _lv_style_set_ptr(lv_style_t * style, lv_style_property_t prop, const void * p);
 
-
-
 /**
  * Get an integer typed property from a style.
  * @param style pointer to a style from where the property should be get

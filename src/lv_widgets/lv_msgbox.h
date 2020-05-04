@@ -153,6 +153,8 @@ uint16_t lv_msgbox_get_active_btn(lv_obj_t * mbox);
  */
 const char * lv_msgbox_get_active_btn_text(lv_obj_t * mbox);
 
+
+#if LV_USE_API_FULL
 /**
  * Get the animation duration (close animation time)
  * @param mbox pointer to a message box object
@@ -166,6 +168,7 @@ uint16_t lv_msgbox_get_anim_time(const lv_obj_t * mbox);
  * @return whether recoloring is enabled
  */
 bool lv_msgbox_get_recolor(const lv_obj_t * mbox);
+#endif
 
 /**
  * Get message box button matrix
