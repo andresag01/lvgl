@@ -448,9 +448,11 @@ void lv_label_get_letter_pos(lv_obj_t * label, uint16_t index, lv_point_t * pos)
     }
 
     /*If the last character is line break then go to the next line*/
-    if((txt[index - 1] == '\n' || txt[index - 1] == '\r') && txt[index] == '\0') {
-        y += letter_height + style->text.line_space;
-        line_start = index;
+    if(index > 0) {
+        if((txt[index - 1] == '\n' || txt[index - 1] == '\r') && txt[index] == '\0') {
+            y += letter_height + style->text.line_space;
+            line_start = index;
+        }
     }
 
     /*Calculate the x coordinate*/
