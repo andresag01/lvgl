@@ -1760,9 +1760,11 @@ static void lv_draw_shadow_full(const lv_area_t * coords, const lv_area_t * mask
     lv_opa_t line_2d_blur[radius + swidth];
 #else
 # if LV_HOR_RES > LV_VER_RES
-    lv_opa_t line_2d_blur[LV_HOR_RES];
+    lv_opa_t *line_2d_blur = lv_mem_alloc(sizeof(lv_opa_t) * LV_HOR_RES);
+    //lv_opa_t line_2d_blur[LV_HOR_RES];
 # else
-    lv_opa_t line_2d_blur[LV_VER_RES];
+    lv_opa_t *line_2d_blur = lv_mem_alloc(sizeof(lv_opa_t) * LV_VER_RES);
+    //lv_opa_t line_2d_blur[LV_VER_RES];
 # endif
 #endif
 
